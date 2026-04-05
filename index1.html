@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giuliano Ferla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inconsolata:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #f5f2eb;
+      --ink: #1a1814;
+      --mid: #6b6560;
+      --accent: #8b3a2a;
+      --rule: #d4cfc6;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 0 1.5rem;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+      animation-delay: 0.1s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 5rem 0 6rem;
+    }
+
+    header {
+      margin-bottom: 4rem;
+      animation: slideUp 0.9s ease forwards;
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.6rem;
+    }
+
+    .bio {
+      font-size: 1.1rem;
+      color: var(--ink);
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    .bio em {
+      font-style: italic;
+      color: var(--mid);
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 2rem;
+      animation: slideUp 0.9s ease forwards;
+      opacity: 0;
+    }
+
+    section:nth-child(2) { animation-delay: 0.5s; }
+    section:nth-child(3) { animation-delay: 0.65s; }
+    section:nth-child(4) { animation-delay: 0.8s; }
+    section:nth-child(5) { animation-delay: 0.95s; }
+
+    h2 {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.4rem;
+    }
+
+    .writing-list {
+      list-style: none;
+    }
+
+    .writing-list li {
+      margin-bottom: 1.1rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .writing-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .writing-list a {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      transition: color 0.2s ease;
+    }
+
+    .writing-list a:hover .article-title {
+      color: var(--accent);
+    }
+
+    .article-title {
+      font-size: 1.05rem;
+      font-weight: 400;
+      transition: color 0.2s ease;
+      display: block;
+      line-height: 1.3;
+    }
+
+    .article-meta {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.72rem;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    .music-text {
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+
+    .press-quotes {
+      margin: 1.4rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .press-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .press-quote cite {
+      font-style: normal;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      display: block;
+      margin-top: 0.3rem;
+      opacity: 0.7;
+    }
+
+    .music-highlights {
+      list-style: none;
+      margin-bottom: 1.4rem;
+    }
+
+    .music-highlights li {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--mid);
+      padding: 0.3rem 0;
+    }
+
+    .music-highlights li::before {
+      content: '— ';
+      color: var(--accent);
+    }
+
+    .listen-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0;
+      margin-bottom: 1.4rem;
+    }
+
+    .listen-links a.text-link {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .listen-links span.sep {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.8rem;
+      color: var(--rule);
+      padding: 0 0.5rem;
+    }
+
+    .new-work {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--mid);
+      opacity: 0.7;
+    }
+
+    a.text-link {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s ease, color 0.2s ease;
+    }
+
+    a.text-link:hover {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+
+    .contact-text {
+      font-size: 1.05rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideUp 0.9s ease forwards;
+      animation-delay: 1.1s;
+      opacity: 0;
+    }
+
+    .footer-name {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-link {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.1rem; }
+      .container { padding: 3.5rem 0 4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <img src="photo.jpg" alt="Giuliano Ferla" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 1.8rem; display: block; filter: grayscale(20%);">
+      <h1>Giuliano Ferla</h1>
+      <p class="bio">Melbourne-based musician, writer, and artist whose work sits at the intersection of music, performance, and the human mind. Recording and performing as Ferla since 2015. Published in <em>The Music</em>, <em>Music Feeds</em>, <em>NME Australia</em>, and <em>Triple R</em>. Currently studying clinical psychology — a pursuit that feels less like a career change than a natural extension of questions he's been asking through music for over a decade.</p>
+    </header>
+
+    <section>
+      <h2>Music</h2>
+      <p class="music-text">Art music that resists easy categorisation — disco-depresso, crooning sad pop — drawing on baroque influences, synth textures, and lyrics that read as much as they sing. Twice nominated for the Australian Music Prize.</p>
+      <div class="press-quotes">
+        <div class="press-quote">
+          "A search for glimmers of hope among chaos, tragedy, dread, banality… lightning sparks of brilliant, buoyant late-night pop."
+          <cite>NME</cite>
+        </div>
+        <div class="press-quote">
+          "An anthem for these modern day apocalyptic times… FERLA sees it all happening, and they decided that we needed to dance to it."
+          <cite>KCRW Los Angeles</cite>
+        </div>
+      </div>
+      <ul class="music-highlights">
+        <li>Meredith Music Festival</li>
+        <li>Featured track, KCRW Los Angeles</li>
+        <li>Two Australian Music Prize nominations</li>
+        <li>Extensive touring across Australia</li>
+      </ul>
+      <div class="listen-links">
+        <a href="https://ferla.bandcamp.com" target="_blank" rel="noopener" class="text-link">Bandcamp</a>
+        <span class="sep">/</span>
+        <a href="https://open.spotify.com/artist/ferla" target="_blank" rel="noopener" class="text-link">Spotify</a>
+        <span class="sep">/</span>
+        <a href="https://www.youtube.com/@ferla" target="_blank" rel="noopener" class="text-link">YouTube</a>
+        <span class="sep">/</span>
+        <a href="https://music.apple.com/search?term=ferla" target="_blank" rel="noopener" class="text-link">Apple Music</a>
+      </div>
+      <p class="new-work">New work in development.</p>
+    </section>
+
+    <section>
+      <h2>Writing</h2>
+      <ul class="writing-list">
+        <li>
+          <a href="https://musicfeeds.com.au/gig/meredith-music-festival-review-doofsticks-neapolitan-disco-and-pop-royalty/" target="_blank" rel="noopener">
+            <span class="article-title">Meredith Music Festival — Doofsticks, Neapolitan Disco and Pop Royalty</span>
+            <span class="article-meta">Music Feeds &nbsp;·&nbsp; 2022</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://musicfeeds.com.au/album/viagra-boys-cave-world-review-swedish-punks-evoke-insanity-and-instability/" target="_blank" rel="noopener">
+            <span class="article-title">Viagra Boys: Cave World — Swedish Punks Evoke Insanity and Instability</span>
+            <span class="article-meta">Music Feeds &nbsp;·&nbsp; 2022</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.rrr.org.au/explore/news-articles/why-i-make-music-giuliano-ferla" target="_blank" rel="noopener">
+            <span class="article-title">Why I Make Music</span>
+            <span class="article-meta">Triple R &nbsp;·&nbsp; 2019</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://themusic.com.au/features/melbourne-psychic-expo/ZRB2eXh7en0/02-07-14" target="_blank" rel="noopener">
+            <span class="article-title">21st Century Snake Oil</span>
+            <span class="article-meta">The Music &nbsp;·&nbsp; 2014</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p class="contact-text">
+        <a href="mailto:hello@example.com" class="text-link">hello@example.com</a>
+      </p>
+    </section>
+
+    <footer>
+      <span class="footer-name">Giuliano Ferla</span>
+      <div class="footer-links">
+        <a href="https://ferla.bandcamp.com" target="_blank" rel="noopener" class="footer-link">Bandcamp</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
